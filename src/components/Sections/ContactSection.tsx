@@ -1,88 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { Send, Github, Linkedin, Mail, CheckCircle, AlertCircle, Eye, Download } from 'lucide-react';
+import React, { useState } from 'react';
+import { Send, Github, Linkedin, Mail, Eye, Download } from 'lucide-react';
 import GlassmorphicCard from '../UI/GlassmorphicCard';
 import SectionTitle from '../UI/SectionTitle';
-import { sendEmail, initEmailJS, type EmailData } from '../../services/emailService';
 
 const ContactSection: React.FC = () => {
-  const [formData, setFormData] = useState<EmailData>({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [submitMessage, setSubmitMessage] = useState('');
-
-  // Initialize EmailJS on component mount
-  useEffect(() => {
-    initEmailJS();
-  }, []);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      // Try to send email using EmailJS
-      const result = await sendEmail(formData);
-      
-      setIsSubmitting(false);
-      
-      if (result.success) {
-        setSubmitStatus('success');
-        setSubmitMessage(result.message);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        setSubmitStatus('error');
-        setSubmitMessage(result.message);
-      }
-      
-      // Clear message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-        setSubmitMessage('');
-      }, 5000);
-      
-    } catch (error) {
-      setIsSubmitting(false);
-      setSubmitStatus('error');
-      setSubmitMessage('Something went wrong. Please try again later.');
-      
-      setTimeout(() => {
-        setSubmitStatus('idle');
-        setSubmitMessage('');
-      }, 5000);
-    }
-  };
-
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/devvratsharma',
-      icon: <Github className="h-5 w-5" />,
+      url: 'https://github.com/devvratsharma026',
+      icon: <Github className="h-5 w-5" />, 
       color: 'text-gray-400 hover:text-white',
       bgColor: 'bg-gray-500 bg-opacity-20'
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/devvratsharma',
-      icon: <Linkedin className="h-5 w-5" />,
+      url: 'https://www.linkedin.com/in/devvrat-sharma/',
+      icon: <Linkedin className="h-5 w-5" />, 
       color: 'text-blue-400 hover:text-blue-300',
       bgColor: 'bg-blue-500 bg-opacity-20'
     },
     {
       name: 'Email',
       url: 'mailto:devsharma.pcm.2003@gmail.com',
-      icon: <Mail className="h-5 w-5" />,
+      icon: <Mail className="h-5 w-5" />, 
       color: 'text-green-400 hover:text-green-300',
       bgColor: 'bg-green-500 bg-opacity-20'
     }
@@ -103,7 +55,11 @@ const ContactSection: React.FC = () => {
               <span className="text-gradient-blue">Send me a message</span>
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              action="https://formsubmit.co/devsharma.pcm.2003@gmail.com"
+              method="POST"
+              className="space-y-4"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-space-300 mb-2 text-sm font-medium">
@@ -116,8 +72,8 @@ const ContactSection: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-space-800 border border-space-600 rounded-lg px-4 py-3 text-space-200 
-                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all 
+                    className="w-full bg-space-800 border border-space-600 rounded-lg px-4 py-3 text-space-200 \
+                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all \
                     placeholder-space-500 glow-input"
                     placeholder="John Doe"
                   />
@@ -134,8 +90,8 @@ const ContactSection: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-space-800 border border-space-600 rounded-lg px-4 py-3 text-space-200 
-                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all 
+                    className="w-full bg-space-800 border border-space-600 rounded-lg px-4 py-3 text-space-200 \
+                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all \
                     placeholder-space-500 glow-input"
                     placeholder="john@example.com"
                   />
@@ -152,8 +108,8 @@ const ContactSection: React.FC = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full bg-space-800 border border-space-600 rounded-lg px-4 py-3 text-space-200 
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all 
+                  className="w-full bg-space-800 border border-space-600 rounded-lg px-4 py-3 text-space-200 \
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all \
                   placeholder-space-500 glow-input"
                   placeholder="Project collaboration, job opportunity, etc."
                 />
@@ -170,79 +126,55 @@ const ContactSection: React.FC = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full bg-space-800 border border-space-600 rounded-lg px-4 py-3 text-space-200 
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all 
+                  className="w-full bg-space-800 border border-space-600 rounded-lg px-4 py-3 text-space-200 \
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all \
                   placeholder-space-500 glow-input resize-none"
                   placeholder="Tell me about your project, ideas, or just say hello..."
                 ></textarea>
               </div>
-              
+
+              {/* FormSubmit hidden fields */}
+              <input type="hidden" name="_replyto" value={formData.email} />
+              <input type="hidden" name="_subject" value={formData.subject} />
+              <input type="hidden" name="_template" value="table" />
+
               <button
                 type="submit"
-                disabled={isSubmitting}
                 className={`w-full py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300
-                ${isSubmitting 
-                  ? 'bg-space-700 text-space-400 cursor-not-allowed' 
-                  : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 hover:shadow-lg'
-                }`}
+                bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 hover:shadow-lg`}
               >
-                {isSubmitting ? (
-                  <span className="flex items-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-space-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Sending Email...
-                  </span>
-                ) : (
-                  <span className="flex items-center">
-                    <Send className="h-4 w-4 mr-2" />
-                    Send Email
-                  </span>
-                )}
+                <span className="flex items-center">
+                  <Send className="h-4 w-4 mr-2" />
+                  Send Email
+                </span>
               </button>
-              
+
               {/* Resume Buttons */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-10">
                 <a
                   href="/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300
+                  className="mt-6 w-full py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300
                   border border-space-500 text-space-200 hover:bg-space-700 hover:text-space-100 hover:border-space-400"
                 >
                   <Eye className="h-4 w-4 mr-2" />
                   View Resume
                 </a>
-                
                 <a
                   href="/resume.pdf"
                   download="Devvrat_Sharma_Resume.pdf"
-                  className="w-full py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300
+                  className="mt-6 w-full py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300
                   bg-gradient-to-r from-teal-600 to-green-600 text-white hover:from-teal-700 hover:to-green-700 hover:shadow-lg"
                 >
                   <Download className="h-4 w-4 mr-2" />
                   Download Resume
                 </a>
               </div>
-              
-              {submitMessage && (
-                <div className={`mt-4 py-3 px-4 rounded-lg flex items-center ${
-                  submitStatus === 'success' 
-                    ? 'bg-green-500 bg-opacity-20 text-green-300 border border-green-500 border-opacity-30' 
-                    : 'bg-red-500 bg-opacity-20 text-red-300 border border-red-500 border-opacity-30'
-                }`}>
-                  {submitStatus === 'success' ? (
-                    <CheckCircle className="h-5 w-5 mr-2 flex-shrink-0" />
-                  ) : (
-                    <AlertCircle className="h-5 w-5 mr-2 flex-shrink-0" />
-                  )}
-                  <span className="text-sm">{submitMessage}</span>
-                </div>
-              )}
             </form>
           </GlassmorphicCard>
-          
+
+          {/* Social Links */}
           {/* Contact Info & Social Links */}
           <div className="space-y-6">
             <GlassmorphicCard className="p-6 md:p-8" glowColor="purple">
@@ -273,7 +205,7 @@ const ContactSection: React.FC = () => {
                   <div>
                     <h4 className="text-space-200 font-medium mb-1">LinkedIn</h4>
                     <a 
-                      href="https://linkedin.com/in/devvratsharma" 
+                      href="https://www.linkedin.com/in/devvrat-sharma/" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="text-space-400 hover:text-blue-400 transition-colors"
@@ -290,7 +222,7 @@ const ContactSection: React.FC = () => {
                   <div>
                     <h4 className="text-space-200 font-medium mb-1">GitHub</h4>
                     <a 
-                      href="https://github.com/devvratsharma" 
+                      href="https://github.com/devvratsharma026" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="text-space-400 hover:text-gray-400 transition-colors"
