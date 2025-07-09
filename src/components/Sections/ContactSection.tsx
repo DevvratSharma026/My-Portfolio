@@ -152,7 +152,7 @@ const ContactSection: React.FC = () => {
               {/* Resume Buttons */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-10">
                 <a
-                  href="/resume.pdf"
+                  href="/assets/Devvrat_Sharma_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-6 w-full py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300
@@ -162,7 +162,7 @@ const ContactSection: React.FC = () => {
                   View Resume
                 </a>
                 <a
-                  href="/resume.pdf"
+                  href="/assets/Devvrat_Sharma_Resume.pdf"
                   download="Devvrat_Sharma_Resume.pdf"
                   className="mt-6 w-full py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300
                   bg-gradient-to-r from-teal-600 to-green-600 text-white hover:from-teal-700 hover:to-green-700 hover:shadow-lg"
