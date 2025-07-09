@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --space-50: #f5f7ff;
+  --space-100: #e4e9ff;
+  --space-200: #c9d4fb;
+  --space-300: #a3b3f0;
+  --space-400: #7a8fe0;
+  --space-500: #516fd0;
+  --space-600: #3554b8;
+  --space-700: #253c91;
+  --space-800: #192b6a;
+  --space-900: #0d1943;
+  --space-950: #050d28;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Dark theme (default) */
+body {
+  @apply bg-space-950 text-space-100;
+}
+
+/* Light theme */
+body.light {
+  @apply bg-white text-gray-900;
+}
+
+/* Theme-aware background colors */
+.bg-space-900 {
+  background-color: var(--space-900);
+}
+
+.light .bg-space-900 {
+  @apply bg-gray-50;
+}
+
+.bg-space-800 {
+  background-color: var(--space-800);
+}
+
+.light .bg-space-800 {
+  @apply bg-white;
+}
+
+.bg-space-700 {
+  background-color: var(--space-700);
+}
+
+.light .bg-space-700 {
+  @apply bg-gray-100;
+}
+
+.bg-space-600 {
+  background-color: var(--space-600);
+}
+
+.light .bg-space-600 {
+  @apply bg-gray-200;
+}
+
+/* Theme-aware text colors */
+.text-space-100 {
+  color: var(--space-100);
+}
+
+.light .text-space-100 {
+  @apply text-gray-900;
+}
+
+.text-space-200 {
+  color: var(--space-200);
+}
+
+.light .text-space-200 {
+  @apply text-gray-800;
+}
+
+.text-space-300 {
+  color: var(--space-300);
+}
+
+.light .text-space-300 {
+  @apply text-gray-700;
+}
+
+.text-space-400 {
+  color: var(--space-400);
+}
+
+.light .text-space-400 {
+  @apply text-gray-600;
+}
+
+.text-space-500 {
+  color: var(--space-500);
+}
+
+.light .text-space-500 {
+  @apply text-gray-500;
+}
+
+/* Theme-aware border colors */
+.border-space-600 {
+  border-color: var(--space-600);
+}
+
+.light .border-space-600 {
+  @apply border-gray-200;
+}
+
+.border-space-700 {
+  border-color: var(--space-700);
+}
+
+.light .border-space-700 {
+  @apply border-gray-300;
+}
+
+.border-space-500 {
+  border-color: var(--space-500);
+}
+
+.light .border-space-500 {
+  @apply border-gray-300;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-space-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-space-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-space-600;
+}
+
+/* Glowing text effects */
+.text-glow-blue {
+  @apply text-blue-400;
+  text-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
+}
+
+.text-glow-purple {
+  @apply text-purple-400;
+  text-shadow: 0 0 8px rgba(192, 132, 252, 0.6);
+}
+
+.text-glow-green {
+  @apply text-green-400;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+}
+
+/* Gradient text */
+.text-gradient-blue {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400;
+}
+
+.text-gradient-purple {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400;
+}
+
+.text-gradient-green {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400;
+}
+
+/* Glowing input fields */
+.glow-input:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1.5s ease-in-out;
+}
