@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import GlassmorphicCard from '../UI/GlassmorphicCard';
 import SectionTitle from '../UI/SectionTitle';
-import logo1 from '../../../dist/assets/devtech-image.png'
-import logo2 from '../../../dist/assets/market-insight.png'
+import logo1 from '../../../dist/assets/devtech_image.png'
+import logo2 from '../../../dist/assets/market_insight.png'
 
 interface Project {
   id: number;
