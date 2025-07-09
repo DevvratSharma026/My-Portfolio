@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import GlassmorphicCard from '../UI/GlassmorphicCard';
 import SectionTitle from '../UI/SectionTitle';
-import logo1 from '../../../dist/assets/devtech - image.png'
+import logo1 from '../../../dist/assets/devtech-image.png'
 import logo2 from '../../../dist/assets/market-insight.png'
 
 interface Project {
