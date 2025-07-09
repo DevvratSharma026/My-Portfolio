@@ -6,13 +6,13 @@ const Footer: React.FC = () => {
   
   const socialLinks = [
     {
-      href: "https://github.com/devvratsharma",
+      href: "https://github.com/devvratsharma026",
       icon: <Github className="h-5 w-5" />,
       label: "GitHub",
       color: "hover:text-gray-400"
     },
     {
-      href: "https://linkedin.com/in/devvratsharma",
+      href: "https://www.linkedin.com/in/devvrat-sharma/",
       icon: <Linkedin className="h-5 w-5" />,
       label: "LinkedIn",
       color: "hover:text-blue-400"
@@ -24,7 +24,8 @@ const Footer: React.FC = () => {
       color: "hover:text-green-400"
     },
     {
-      href: "/resume.pdf",
+      href: "assets/Devvrat_Sharma_Resume.pdf",
+      target:"_blank",
       icon: <FileText className="h-5 w-5" />,
       label: "Resume",
       color: "hover:text-purple-400"
