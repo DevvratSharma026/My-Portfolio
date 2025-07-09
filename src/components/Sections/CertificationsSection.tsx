@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, Download } from 'lucide-react';
 import GlassmorphicCard from '../UI/GlassmorphicCard';
 import SectionTitle from '../UI/SectionTitle';
-import data_science_certificate from '../../../dist/assets/data_science.png'
-import Gen_AI_certificate from '../../../dist/assets/Gen_Ai.png'
+
+const data_science_certificate = "/assets/data_science.png";
+const Gen_AI_certificate = "/assets/Gen_Ai.png";
 
 interface Certificate {
   id: number;
